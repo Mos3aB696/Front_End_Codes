@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week Fiveteen</title>
+    <style>
+      body {
+        background-color: #eee;
+      }
+      ul {
+        margin: 0 auto;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 280px;
+        height: 40px;
+        list-style: none;
+        background: #9e9e9e38;
+      }
+      ul li {
+        width: 40px;
+        height: 40px;
+        opacity: 0.5;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+      ul li.active,
+      ul li:hover {
+        opacity: 1;
+      }
+      ul li:first-child {
+        background-color: red;
+      }
+      ul li:nth-child(2) {
+        background-color: green;
+      }
+      ul li:nth-child(3) {
+        background-color: blue;
+      }
+      ul li:last-child {
+        background-color: black;
+      }
+      .experiment {
+        width: 400px;
+        height: 200px;
+        background: red;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li class="active" data-color="red"></li>
+      <li data-color="green"></li>
+      <li data-color="blue"></li>
+      <li data-color="black"></li>
+    </ul>
+    <div class="experiment"></div>
+    <script src="Fiveteen.js"></script>
+  </body>
+</html>

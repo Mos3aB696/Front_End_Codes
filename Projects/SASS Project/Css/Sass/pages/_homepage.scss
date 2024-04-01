@@ -1,0 +1,129 @@
+// Start Slider
+.slider {
+  padding: $header-padding;
+  blockquote {
+    color: $second-color;
+    font: {
+      weight: bold;
+      size: 20px;
+      style: italic;
+    }
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    width: 80%;
+    line-height: $main-line-height;
+  }
+  img {
+    max-width: 100%;
+  }
+  .slider-bullets {
+    user-select: none;
+    padding: 15px 0;
+    li {
+      width: 15px;
+      height: 15px;
+      background-color: $second-color;
+      display: inline-block; // Choosen inline-block to take page direction (rtl || ltr)
+      border-radius: 50%;
+      border: 3px solid $second-color;
+      cursor: pointer;
+      &.active,
+      &:hover {
+        background-color: #fff;
+        border: 3px solid #333;
+      }
+    }
+  }
+}
+// End Slider
+// Start Services
+.our-services {
+  padding: $header-padding;
+  .services {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mobilScreen {
+      flex-direction: column;
+    }
+    .service {
+      margin: auto;
+      .icon {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        @include mobilScreen {
+          justify-content: center;
+        }
+        .the-icon {
+          font-size: 25px;
+        }
+        h4 {
+          margin: 0 20px;
+        }
+      }
+      p {
+        width: 90%;
+        color: $second-color;
+        line-height: $main-line-height;
+        @include mobilScreen {
+          margin: auto;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+// End Services
+// Start Players
+.our-players {
+  padding: $header-padding;
+  .players {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mobilScreen {
+      flex-direction: column;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .player {
+      padding: 0 10px 0;
+      @include mobilScreen {
+        margin: 10px 0;
+      }
+      img {
+        max-width: 100%;
+      }
+      h4 {
+        font-weight: normal;
+        margin: 10px 0;
+        span {
+          font-weight: bold;
+        }
+      }
+      p {
+        color: $second-color;
+        line-height: $main-line-height;
+      }
+    }
+  }
+}
+// End Players
+// Start Lorem Ipsum
+.lorem-ipsum {
+  padding: $header-padding;
+  .images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    img {
+      @include mobilScreen {
+        margin: auto;
+        // grid-template-columns: repeat(auto-fill, minmax(250px));
+      }
+    }
+  }
+}
+// End Lorem Ipsum

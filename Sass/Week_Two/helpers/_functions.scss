@@ -1,0 +1,17 @@
+// Create Function To Get Half Of Anything
+@function half($size) {
+  @return $size / 2;
+}
+// Create Function To Calculate Many Sizes
+@function calculate($sizes...) {
+  $total: 0;
+  @each $size in $sizes {
+    $total: $total + $size;
+  }
+  @return $total;
+}
+
+// Returns a number without unit
+@function rm-unit($value) {
+  @return $value / ($value * 0 + 1);
+}

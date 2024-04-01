@@ -1,0 +1,13 @@
+// Double Width
+@function double($size) {
+  @return $size * $num;
+}
+
+// Sum Anonymous numbers
+@function get-total($sizes...) {
+  $total: 0;
+  @each $size in $sizes {
+    $total: $total + $size;
+  }
+  @return $total;
+}

@@ -1,0 +1,91 @@
+// Import Mixins
+@use "./helpers/mixins" as *;
+/*Assignments From 11 To 15*/
+//--------------------[Assign One]
+.element {
+  &::before {
+    @include arrow(left);
+  }
+}
+//--------------------[Assign Two]
+$columns: 16;
+
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    width: percentage($i / $columns);
+  }
+}
+//--------------------[Assign Three]
+$names: "books" 20px red 18, "games" 30px green 18, "dvds" 20px blue;
+
+@each $name, $padding, $color, $font-size in $names {
+  .#{$name} {
+    padding: $padding;
+    font-size: if($font-size, $font-size px, 16px);
+    border-bottom: 2px solid $color;
+    color: #444;
+  }
+}
+//--------------------[Assign Four]
+$init: 1;
+
+@while $init <= 5 {
+  .circle-#{$init * 100} {
+    width: $init * 100px;
+    height: $init * 100px;
+    border-radius: $init * 50px;
+  }
+  $init: $init + 1;
+}
+//--------------------[Assign Five]
+$init: 1;
+
+@for $i from $init through 5 {
+  .circle-#{$init * 100} {
+    width: $init * 100px;
+    height: $init * 100px;
+    border-radius: $init * 50px;
+  }
+  $init: $init + 1;
+}
+//--------------------[Assign Six]
+textarea {
+  @include placeholder {
+    color: #777;
+  }
+}
+//--------------------[Assign Seven]
+.box-one {
+  @include flex-center(400px);
+}
+.box-two {
+  @include flex-center;
+}
+/*Assignments From 16 To 19*/
+//-------------------- [Assign One]
+$num: 2;
+$start: 100;
+
+@function double($size) {
+  @return $size * $num;
+}
+
+@for $i from 1 to 6 {
+  .box-#{($start)} {
+    width: $start;
+    height: double($start);
+  }
+  $start: double($start);
+}
+//-------------------- [Assign Two]
+@function get-total($sizes...) {
+  $total: 0;
+  @each $size in $sizes {
+    $total: $total + $size;
+  }
+  @return $total;
+}
+.box {
+  top: get-total(100, 50, 20);
+  right: get-total(100, 50);
+}

@@ -1,0 +1,60 @@
+/* Landscape phones and portrait tablets */
+@mixin mobilScreen {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin smallScreen {
+  @media (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+/* Portrait tablets and small desktops */
+@mixin mediumScreen {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+/* Landscape tablets and medium desktops */
+@mixin largeScreen {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// Overlay Mixin
+@mixin overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+// Prefixer Mixin
+@mixin prefixer($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+  #{$property}: $value;
+}
+
+//Animation Mixin
+@mixin keyFrames($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}

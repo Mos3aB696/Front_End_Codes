@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #f6f6f6;
+  @if ($lang == Arabic) {
+    direction: rtl;
+  }
+  font: {
+    family: Tahoma;
+  }
+}
+li,
+ol {
+  list-style: none;
+  padding: 0;
+}

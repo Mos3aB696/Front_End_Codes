@@ -1,0 +1,9 @@
+.container .one,
+.container .two h3,
+.container .three p.title {
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: ;
+}

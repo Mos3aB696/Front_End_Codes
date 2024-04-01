@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.parent {
+  width: 400px;
+  background-color: #eee;
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+  box-shadow: 0 0 10px #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+
+.num {
+  font-size: 20px;
+  background-color: #26a59a;
+  color: white;
+  width: fit-content;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.8s;
+}
+.parent h2 {
+  transition: 0.6s;
+}
+.parent p {
+  transition: 0.6s;
+}
+.parent:hover .num {
+  box-shadow: 0 0 0 300px #26a59a;
+}
+.parent:hover h2, 
+.parent:hover p {
+  color: white;
+}

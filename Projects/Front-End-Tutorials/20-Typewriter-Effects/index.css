@@ -1,0 +1,38 @@
+:root {
+  --main-color: rgba(255, 255, 255, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #333;
+  color: var(--main-color);
+  font-family: sans-serif;
+}
+p {
+  font-size: 30px;
+  width: 0;
+  margin: 30px auto;
+  border-right: 2px solid var(--main-color);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: control-width 3s 2s steps(28) both, blink 0.5s infinite;
+}
+@keyframes control-width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 430px;
+  }
+}
+
+@keyframes blink {
+  from {
+    border-right-color: var(--main-color);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}

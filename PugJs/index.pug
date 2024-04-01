@@ -1,0 +1,180 @@
+include includes/Variables
+include includes/mixins
+|
+|
+doctype 
+html(lang='en')
+  head 
+    meta(charset='utf-8')
+    meta(name='description', content='learning pugjs')
+    //- Includes allow you to insert the contents of one Pug file into another.
+    include includes/style.pug
+    block pageTitle
+      title Pugjs
+  body 
+    block mainInfo
+      main Main Info From Index Page
+    block testingContent
+      .main This content from main page
+    block allContent
+      .container  
+        h2  My Skills 
+        p This Is My Skills
+        // 
+          You Can Use this way to 
+          add mutiple comment line
+        //- Start My Skills
+        ul  
+          li html 
+          li css
+          li js !{"}"}!
+          li bootstarp
+          li sass
+          li pugjs
+          li gulpjs
+          //- End My Skills
+        p lorem 
+        // You Use : To Add Element Inside Another One
+        div: a(href="https://google.com") Google
+        // You Can Use Html tags and element in Pugjs
+        p lorem ipsum <strong> Test </strong>
+
+        p.main-paragraph I love <b>Pugjs</b> And <b>SASS</b>
+        p#main-paragraph
+          | I Love 
+          b Pugjs
+          |  And 
+          b SASS
+        |
+        |
+        .
+          This Is Text
+        hr 
+        form
+          h2.main-title  Your Information
+          input(
+            class = 'username',
+            type = 'text',
+            name = 'username',
+            placeholder = 'Username'
+            required,
+            autofocus
+          )
+          input(
+            class = 'email',
+            type = 'email',
+            name = 'email',
+            placeholder = 'Email',
+
+          )
+          input(
+            class = 'password',
+            type = 'password',
+            name = 'password',
+            placeholder = 'Password',
+          )
+          button Submit
+          button(type='reset') Reset
+        div(
+          class='mos3ab',
+          id='mos3ab'
+          ) 
+
+        div(class='parent ' + theFonts) Parent div  
+          div(class='child ' + mainColor) Child div  
+          div(class=mainColor) You Can Use Variables Only By This Way
+        // Buffered Code
+        //- 
+          Buffered code starts with =. It evaluates the JavaScript expression
+          and outputs the result. For security,
+          buffered code is first HTML escaped.
+        div(class='buffered-code')= 'This is <b>Tag</b> Will Be Appear'
+
+        ul 
+          //- Use for to create loop
+          - for(let i = 0; i <= 5; i++)
+            li Item-#{i}
+          -let values = ['Ahmed', 'Mos3aB', 'Mohammed']
+          //- Use each to create loop
+          each val in values
+            li= val 
+        //- Use while to create loop
+        -let test = 0
+        ul
+          while test < 20
+            li= test++
+
+        //- 
+          You can also get the index as you iterate:
+          You can also use templet literal as js 
+        each val, index in [1,'Two',3,4,5,6,7,8]
+          div=`The index is: ${index}, The value is: ${val} `
+
+        -let mySkills = ['HTML', 'CSS', 'Javascript', 'SASS']
+        //- You can use ternary operator
+        each val in mySkills.length ? mySkills : ['There are no skills']
+          div=val
+        //- 
+          One can also add an else block that will be executed if the array 
+          or object does not contain values to iterate over.
+        -let numbers = []
+        each num in numbers 
+          div=num
+        else 
+          div There's no numbers
+        // Interpolation
+        //- You can use js function inside interpolation
+        .copyright Created With Love By #{autherName.toUpperCase()}
+        .copyright Created With Love By !{autherNameBold}
+        .copyright Created With Love By #{autherNameBold}
+        // Tag Interpolation 
+        p.main-paragraph I Love <b>Pugjs</b> And <b>SASS</b>
+        p#main-paragraph
+        | I Love 
+        b Pugjs
+        |  And 
+        b SASS
+        p I Love #[b Pugjs] And #[b SASS]
+        //- If you want make scape for any character you write use \
+        div This Is \#{Mos3aB}
+        div This Is #{'#{Mos3aB}'}
+        // Mixins
+        //- You Can Make External Page For Mixins
+        +skillList
+        +theme
+        // Mixin With Arguments
+        +feature('Responsive Design')
+        +feature('Clean Code')
+        +feature('Fast Website')
+        -let friends = 8
+        case friends
+          when 0
+            p You have no friends
+          when 1
+            p You have one friends  
+          default 
+            p You have #{friends} friends
+
+        -let days = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+        each day in days 
+          case day  
+            when 'Friday'
+            when 'Saturday'
+              div(class='no-work', style={
+                'color': 'red'
+              }) There is no work Today
+            default 
+              div(class='work', style={
+                'color': 'green'
+              }) The day is #{day}, There is a work Today
+
+        -let number = 0
+        case number
+          when 0: -break
+          when 1: p Only One
+          default: p #{number} Numbers
+
+    //- Includes allow you to insert the contents of one Pug file into another.
+    include includes/scripts.pug
+
+

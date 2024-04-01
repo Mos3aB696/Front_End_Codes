@@ -1,0 +1,172 @@
+// Mixin And Include
+/*
+The @mixin directive lets you create CSS code that is to be reused throughout the website.
+The @include directive is created to let you use (include) the mixin.
+*/
+// Import Mixins
+@use "./helpers/mixins" as *;
+// Import Functions
+@use "./helpers/functions" as *;
+
+ul.links {
+  @include list-rest;
+}
+
+.circle-100 {
+  @include circle(100);
+  background-color: #f00;
+  color: #fff;
+}
+.circle-200 {
+  @include circle(200);
+  background-color: #0f0;
+  color: #fff;
+}
+
+@mixin centering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-circle {
+  @include circle(400px);
+  @include centering;
+}
+
+// Loop => For
+
+@for $i from 1 through 5 {
+  .class-#{$i} {
+    font-size: #{$i + 10px};
+  }
+}
+
+$dimensions: 0;
+
+@for $i from 1 through 5 {
+  .class-#{100 + $dimensions} {
+    width: 100 + $dimensions;
+    height: 100 + $dimensions;
+    border-radius: 50%;
+  }
+  $dimensions: $dimensions + 100;
+}
+// Each + Maps
+
+$themes: red, green, blue, orange;
+
+@each $theme in $themes {
+  .#{$theme}-theme {
+    .product {
+      border-bottom: 1px solid $theme;
+      padding: 20px;
+      background-color: #eee;
+      .title {
+        color: $theme;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+$social: (
+  "Facebook": blue,
+  "Youtube": red,
+  "GitHub": black,
+  "Twitter": rgb(6, 154, 203),
+);
+
+@each $name, $color in $social {
+  .#{$name} {
+    background-color: $color;
+    color: #fff;
+    &::before {
+      content: $name;
+    }
+  }
+}
+
+$classes: "one" 20px red #fff, "two" 14px blue #fff, "three" 24px green #fff,
+  "four" 50px yellow #fff, "five" 30px black #fff;
+
+@each $name, $font-size, $bg-color, $color in $classes {
+  .#{$name} {
+    font-size: $font-size;
+    background-color: $bg-color;
+    color: $color;
+    padding: $font-size / 2;
+  }
+}
+
+// Loop => While
+
+$start: 1;
+
+@while $start <= 9 {
+  .width-#{$start * 100} {
+    width: $start * 100px;
+    height: ($start * 100px) / 2;
+  }
+  $start: $start + 1;
+}
+// Create Grid System
+$grid_col: 12;
+
+@for $i from 1 through $grid_col {
+  .col-#{$i} {
+    // the percentage means, a part per hundred. The word per cent means per 100.
+    width: percentage($i / $grid_col);
+  }
+}
+// Functions
+
+$width: 200px;
+.element {
+  width: $width;
+  height: half($width);
+  top: calculate(100px, 200px, 300px);
+  left: calculate(50px);
+}
+
+// Mixin With Content
+.black-overlay {
+  @include overlay(black, 0.5);
+}
+
+@include keyF(fade-in) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@include keyF(go-up) {
+  from {
+    bottom: 1000px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+// If Condition + Mixin + Content
+.media {
+  @include breakpoint(very small) {
+    font-size: 15px;
+  }
+  @include breakpoint(small) {
+    font-size: 18px;
+  }
+  @include breakpoint(medium) {
+    font-size: 20px;
+  }
+  @include breakpoint(large) {
+    font-size: 22px;
+  }
+}
+
+.test {
+  width: rm-unit(100px);
+}

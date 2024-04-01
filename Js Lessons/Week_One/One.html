@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week One</title>
+    <script>
+      // Code One
+      // document.getElementById("el").style.color = "red";
+      //       This code dosen't work
+      //       Because The Js code before the Element
+    </script>
+    <script>
+      // Code Two
+      window.onload = function () {
+        document.getElementById("el").style.color = "red";
+        //       Work
+        //       Because You tell The Browser read Js File after make onload
+      };
+    </script>
+  </head>
+  <body>
+    <h3 id="el">Page Title</h3>
+    <script>
+      // Code Three
+      document.getElementById("el").style.color = "red";
+            //      Work
+            //      Because the Js file comes after an Element
+    </script>
+    <script src="One.js"></script>
+  </body>
+</html>

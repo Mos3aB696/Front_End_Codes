@@ -1,0 +1,341 @@
+/*
+The @mixin directive lets you create CSS code that is to be reused throughout the website.
+The @include directive is created to let you use (include) the mixin.
+*/
+ul.links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.circle-100 {
+  border-radius: 50%;
+  width: 100;
+  height: 100;
+  background-color: #f00;
+  color: #fff;
+}
+
+.circle-200 {
+  border-radius: 50%;
+  width: 200;
+  height: 200;
+  background-color: #0f0;
+  color: #fff;
+}
+
+.center-circle {
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.class-1 {
+  font-size: 11px;
+}
+
+.class-2 {
+  font-size: 12px;
+}
+
+.class-3 {
+  font-size: 13px;
+}
+
+.class-4 {
+  font-size: 14px;
+}
+
+.class-5 {
+  font-size: 15px;
+}
+
+.class-100 {
+  width: 100;
+  height: 100;
+  border-radius: 50%;
+}
+
+.class-200 {
+  width: 200;
+  height: 200;
+  border-radius: 50%;
+}
+
+.class-300 {
+  width: 300;
+  height: 300;
+  border-radius: 50%;
+}
+
+.class-400 {
+  width: 400;
+  height: 400;
+  border-radius: 50%;
+}
+
+.class-500 {
+  width: 500;
+  height: 500;
+  border-radius: 50%;
+}
+
+.red-theme .product {
+  border-bottom: 1px solid red;
+  padding: 20px;
+  background-color: #eee;
+}
+.red-theme .product .title {
+  color: red;
+  font-weight: bold;
+}
+
+.green-theme .product {
+  border-bottom: 1px solid green;
+  padding: 20px;
+  background-color: #eee;
+}
+.green-theme .product .title {
+  color: green;
+  font-weight: bold;
+}
+
+.blue-theme .product {
+  border-bottom: 1px solid blue;
+  padding: 20px;
+  background-color: #eee;
+}
+.blue-theme .product .title {
+  color: blue;
+  font-weight: bold;
+}
+
+.orange-theme .product {
+  border-bottom: 1px solid orange;
+  padding: 20px;
+  background-color: #eee;
+}
+.orange-theme .product .title {
+  color: orange;
+  font-weight: bold;
+}
+
+.Facebook {
+  background-color: blue;
+  color: #fff;
+}
+.Facebook::before {
+  content: "Facebook";
+}
+
+.Youtube {
+  background-color: red;
+  color: #fff;
+}
+.Youtube::before {
+  content: "Youtube";
+}
+
+.GitHub {
+  background-color: black;
+  color: #fff;
+}
+.GitHub::before {
+  content: "GitHub";
+}
+
+.Twitter {
+  background-color: rgb(6, 154, 203);
+  color: #fff;
+}
+.Twitter::before {
+  content: "Twitter";
+}
+
+.one {
+  font-size: 20px;
+  background-color: red;
+  color: #fff;
+  padding: 10px;
+}
+
+.two {
+  font-size: 14px;
+  background-color: blue;
+  color: #fff;
+  padding: 7px;
+}
+
+.three {
+  font-size: 24px;
+  background-color: green;
+  color: #fff;
+  padding: 12px;
+}
+
+.four {
+  font-size: 50px;
+  background-color: yellow;
+  color: #fff;
+  padding: 25px;
+}
+
+.five {
+  font-size: 30px;
+  background-color: black;
+  color: #fff;
+  padding: 15px;
+}
+
+.width-100 {
+  width: 100px;
+  height: 50px;
+}
+
+.width-200 {
+  width: 200px;
+  height: 100px;
+}
+
+.width-300 {
+  width: 300px;
+  height: 150px;
+}
+
+.width-400 {
+  width: 400px;
+  height: 200px;
+}
+
+.width-500 {
+  width: 500px;
+  height: 250px;
+}
+
+.width-600 {
+  width: 600px;
+  height: 300px;
+}
+
+.width-700 {
+  width: 700px;
+  height: 350px;
+}
+
+.width-800 {
+  width: 800px;
+  height: 400px;
+}
+
+.width-900 {
+  width: 900px;
+  height: 450px;
+}
+
+.col-1 {
+  width: 8.3333333333%;
+}
+
+.col-2 {
+  width: 16.6666666667%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.3333333333%;
+}
+
+.col-5 {
+  width: 41.6666666667%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.3333333333%;
+}
+
+.col-8 {
+  width: 66.6666666667%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.3333333333%;
+}
+
+.col-11 {
+  width: 91.6666666667%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.element {
+  width: 200px;
+  height: 100px;
+  top: 600px;
+  left: 50px;
+}
+
+.black-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes go-up {
+  from {
+    bottom: 1000px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+@media (max-width: 767px) {
+  .media {
+    font-size: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .media {
+    font-size: 18px;
+  }
+}
+@media (max-width: 767px) {
+  .media {
+    font-size: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .media {
+    font-size: 22px;
+  }
+}
+
+.test {
+  width: 100;
+}/*# sourceMappingURL=main.css.map */

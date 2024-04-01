@@ -1,0 +1,131 @@
+// Start Footer
+.footer {
+  background-color: $footer-color;
+  padding: $header-padding;
+  margin-top: 50px;
+  .container {
+    display: flex;
+    gap: 10px;
+    @include mobilScreen {
+      flex-direction: column;
+      margin: auto;
+      text-align: center;
+    }
+    .gallery {
+      @include mobilScreen {
+        width: 100%;
+      }
+      .the-info {
+        display: flex;
+        align-items: center;
+        margin: 35px 0;
+        @include mobilScreen {
+          flex-direction: column;
+        }
+        .img {
+          img {
+            box-shadow: 0px 0px 7px 3px $main-color;
+          }
+        }
+        .info {
+          margin: 0 10px;
+          h4 {
+            color: $main-color;
+          }
+          p {
+            color: $second-color;
+            line-height: $main-line-height;
+          }
+        }
+      }
+    }
+    .detials {
+      @include mobilScreen {
+        width: 100%;
+      }
+      ul {
+        margin-bottom: 20px;
+        li {
+          color: $second-color;
+          &.point {
+            margin-bottom: 10px;
+          }
+          & > span {
+            color: $main-color;
+            font-weight: bold;
+            font-size: 14px;
+          }
+        }
+      }
+      p {
+        color: $second-color;
+        line-height: $main-line-height;
+      }
+    }
+    .contact {
+      @include mobilScreen {
+        width: 100%;
+      }
+      form {
+        @include mobilScreen {
+          margin: auto;
+          width: fit-content;
+        }
+        input,
+        textarea {
+          display: block;
+          border: none;
+          margin: 8px 0;
+          padding: 6px 5px;
+          border-radius: 10px;
+          width: 100%;
+          &:not(:placeholder-shown) + input[type="submit"] {
+            display: block;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        textarea {
+          height: 140px;
+        }
+        input[type="submit"] {
+          display: none;
+          background-color: rgba($main-color, 0.7);
+          color: #fff;
+          padding: 5px 25px;
+          cursor: pointer;
+          &:hover {
+            background-color: $main-color;
+          }
+        }
+      }
+    }
+  }
+}
+// End Footer
+// Start Copyright
+.copyright {
+  padding: $header-padding;
+  background-color: $footer-color;
+  color: $second-color;
+  .container {
+    border-top: 2px solid #9c9c9c;
+    padding: 20px 0;
+    .text {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include mobilScreen {
+        flex-direction: column;
+      }
+      div {
+        span {
+          color: $main-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+// End Copyright

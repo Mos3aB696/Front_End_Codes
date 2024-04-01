@@ -1,0 +1,20 @@
+//- 
+  - Get all index page content
+  - If no file extension is given, .pug is automatically
+    appended to the file name.
+extends index
+
+block pageTitle
+  title About Page
+
+block prepend mainInfo
+  .prepend Main Info From About Page
+
+block append mainInfo 
+  .append Main Info From About Page
+
+block testingContent
+  p.about This content is now updated
+
+block allContent
+  .myName Mos3aB

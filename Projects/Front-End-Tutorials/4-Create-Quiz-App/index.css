@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.quiz-app {
+  width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #eee;
+}
+.quiz-info {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  background-color: #dfdfdf;
+  padding: 20px;
+}
+.quiz-area {
+  background-color: #d3d3d3;
+  padding: 20px;
+  margin-top: 10px;
+}
+.quiz-area h2 {
+  margin: 0;
+}
+.answers-area {
+  background-color: #dfdfdf;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+.answers-area .answer {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  user-select: none;
+}
+.answers-area .answer input[type="radio"],
+.answers-area .answer input[type="radio"] + label {
+  cursor: pointer;
+}
+.answers-area .answer:not(:last-child) {
+  border-bottom: 1px solid #d3d3d3;
+}
+.answers-area .answer input[type="radio"]:checked + label {
+  color: #0075ff;
+}
+
+button {
+  width: 100%;
+  background-color: #0075ff;
+  color: white;
+  padding: 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+
+.bullets {
+  display: flex;
+  background-color: #dfdfdf;
+  margin-top: 10px;
+  padding: 20px;
+  justify-content: space-between;
+}
+.bullets .spans {
+  display: flex;
+}
+.bullets .spans span {
+  width: 10px;
+  height: 10px;
+  background-color: #eee;
+  border: 2px solid #d3d3d3;
+  padding: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+.bullets .spans span.on {
+  background-color: #0075ff;
+}
+.bullets .count-down {
+  background-color: #0075ff;
+  padding: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.results {
+  margin: 10px auto;
+  width: 100%;
+  background-color: #dfdfdf;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.results span.prefect {
+  color: #0075ff;
+}
+.results span.good {
+  color: #009688;
+}
+.results span.bad {
+  color: red;
+}

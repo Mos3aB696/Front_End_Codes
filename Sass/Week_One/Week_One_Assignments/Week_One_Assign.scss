@@ -1,0 +1,202 @@
+//---------------------------------------------------------------[Part One]
+//---------------- [Assign Nine]
+/*  @use rules must be written before any other rules. */
+// Import function.scss
+@use "./Project_Folder/Helpers/functions";
+// Import vars.scss
+@use "./Project_Folder/Helpers/vars";
+// Import header.scss
+@use "./Project_Folder/Layout/header";
+// Import footer.scss
+@use "./Project_Folder/Layout/footer";
+//---------------- [Assign One]
+.content {
+  > .box {
+    padding: 15px;
+    > .title {
+      font-size: 18px;
+    }
+  }
+  .cat {
+    padding: 15px;
+  }
+  &.premium::before {
+    content: "Premium Box";
+  }
+  &.premium:hover {
+    background-color: #eee;
+  }
+}
+//---------------- [Assign Two]
+.class {
+  > .child {
+    padding: 10px;
+  }
+}
+.class > {
+  .child {
+    padding: 10px;
+  }
+}
+.class > .child {
+  padding: 10px;
+}
+//---------------- [Assign Three]
+%container {
+  font-weight: bold;
+  font-size: 20px;
+}
+.class {
+  @extend %container;
+}
+//---------------- [Assign Four]
+// The Sibling Class Coming After Parent Class
+.parent + .sibling {
+  margin: auto;
+  top: 10px;
+}
+// Any Element Take Class Last And Coming After Parent Class Inside Sibling Class
+.parent + .sibling ~ .last {
+  padding: 10px;
+}
+//---------------- [Assign Five]
+.widget {
+  background-color: #fff;
+  padding: 20px;
+}
+.main-border {
+  border: 1px solid #ccc;
+}
+.my-class {
+  @extend .widget;
+  @extend .main-border;
+  font-weight: bold;
+  margin: 20px auto;
+}
+//---------------- [Assign Six]
+%widget {
+  background-color: #fff;
+  padding: 20px;
+}
+%main-border {
+  border: 1px solid #ccc;
+}
+%my-class {
+  font-weight: bold;
+  margin: 20px auto;
+}
+.my-class {
+  @extend %widget, %main-border, %my-class;
+}
+//---------------- [Assign Seven]
+.box {
+  h2 {
+    font-size: 20px;
+  }
+  @media (max-width: 575px) {
+    h2 {
+      font-size: 16px;
+    }
+    h2 span {
+      font-weight: bold;
+    }
+  }
+  p {
+    @extend h2;
+  }
+}
+//---------------- [Assign Eight]
+
+$red: #e91e63;
+$green: #009688;
+
+// Add What You Want Here
+$link-color: $green;
+$link-hover: $red;
+
+.box a {
+  color: $link-color;
+  &:hover {
+    color: $link-hover;
+  }
+}
+//---------------- [Assign Ten]
+.box {
+  font-size: 20px;
+  &-holder {
+    width: 1000px;
+    &-content {
+      margin: auto;
+    }
+  }
+}
+//---------------------------------------------------------------[Part Two]
+//---------------- [Assign One]
+$main: "school";
+$child: "box";
+$language: "ar";
+$gap: 20px;
+
+.#{$main} {
+  padding: $gap;
+  @if $language == "en" {
+    direction: ltr;
+  } @else if $language == "ar" {
+    direction: rtl;
+  } @else {
+    @error "Your Language #{$language} Is Not Valid";
+  }
+  margin-left: $gap;
+
+  & .#{$main}-#{$child} {
+    padding: calc($gap / 2);
+  }
+
+  &:hover .#{$main}-#{$child} {
+    background-color: #eee;
+  }
+}
+//---------------- [Assign Two]
+// SASS Code
+$main-color: red;
+$alt-color: blue;
+
+/* Theme Version: 1.0 */
+/* Website Theme Main Color Is: #{$main-color} */
+/* Website Theme Alternate Color Is: #{$alt-color} */
+//---------------- [Assign Three]
+$number: 5;
+
+.class {
+  @if $number > 8 {
+    color: #00f;
+  } @else if $number > 5 {
+    color: #0f0;
+  } @else {
+    color: #f00;
+  }
+}
+//---------------- [Assign Four]
+// SASS Code
+$number: 4;
+$color: blue;
+$theme: light;
+
+.class {
+  @if $number > 5 & $color == "red" & $theme != "dark" {
+    color: black;
+  }
+}
+//---------------- [Assign Five]
+$number: 8;
+
+.box {
+  @if $number == 10 {
+    background-color: #eee;
+    text-align: center;
+  } @else if $number == 9 {
+    background-color: #eee;
+  } @else {
+    /*Nothing*/
+  }
+}

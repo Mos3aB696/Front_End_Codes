@@ -1,0 +1,12 @@
+{
+  "userName": "Mos3aB",
+  "age": 21,
+  "addresses": {
+    "Egypt": "Monufia",
+    "Qatar": "Losael",
+    "Unted Status": "Los Anglos"
+  },
+  "skills": ["HTML", "Css", "JavaScript"],
+  "availableToWork": true,
+  "another": null
+}

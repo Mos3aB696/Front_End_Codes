@@ -1,0 +1,26 @@
+.parent {
+  width: 400px;
+  height: 400px;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 50%;
+  margin-top: 50%;
+  transform: translate(-50%, -50%); */
+  
+}
+.scale {
+  background-color: rgba(255, 0, 0, 0.6);
+  width: 90%;
+  height: 90%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(-1);
+  -webkit-transform: scale(-1);
+  -moz-transform: scale(-1);
+  -ms-transform: scale(-1);
+  -o-transform: scale(-1);
+}

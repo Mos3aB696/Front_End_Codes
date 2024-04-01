@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.parent {
+  width: 400px;
+  padding: 5px 20px;
+  background-color: #eee;
+  margin: 20px auto;
+  text-align: center;
+}
+.parent h2 {
+  background-color: #009587;
+  color: white;
+  padding: 15px;
+  width: calc(100% + 80px);
+  position: relative;
+  left: -40px;
+  top: 0;
+}
+.parent h2::before {
+  content: "";
+  position: absolute;
+  border-width: 10px;
+  border-color: #02766a #02766a transparent transparent;
+  border-style: solid;
+  left: 0;
+  bottom: -20px;
+}
+.parent h2::after {
+  content: "";
+  position: absolute;
+  border-width: 10px;
+  border-color: transparent transparent #02766a #02766a ;
+  border-style: solid;
+  right: 0;
+  top: -20px;
+}
+.parent p {
+  line-height: 1.6;
+  font-size: 18px;
+}

@@ -1,0 +1,36 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #333;
+}
+.link {
+  text-decoration: none;
+  color: #92c05f;
+  font-size: 40px;
+  border: 1px solid #92c05f;
+  padding: 10px 15px;
+  margin: 50px auto;
+  display: block;
+  width: 300px;
+  text-align: center;
+  position: relative;overflow: hidden;
+}
+.link::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -20px;
+  color: #92c05f;
+  transform: translateX(-100%);
+  transition: 0.8s;
+
+}
+.link span {
+  display: block;
+  transition: 0.8s;
+}
+.link:hover::before {
+transform: translateX(20%);
+}
+.link:hover span {
+  transform: translateX(120%);
+}

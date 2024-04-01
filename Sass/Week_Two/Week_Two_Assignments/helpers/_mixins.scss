@@ -1,0 +1,56 @@
+// Arrow Direction Mixin
+@mixin arrow($direction) {
+  content: "";
+  position: absolute;
+  border: 20px solid transparent;
+  // $direction: -40px;
+  @if ($direction == top) {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40px;
+    border-bottom-color: red;
+  } @else if ($direction == right) {
+    top: 50%;
+    transform: translateY(-50%);
+    right: -40px;
+    border-left-color: red;
+  } @else if ($direction == bottom) {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -40px;
+    border-top-color: red;
+  } @else if ($direction == left) {
+    top: 50%;
+    transform: translateY(-50%);
+    left: -40px;
+    border-right-color: red;
+  } @else {
+    @error "Your Direction #{$direction} Is Not Valid";
+  }
+}
+// Prifixes Mixin
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+// Centering Mixin
+// Set Width (400px) As Default
+@mixin flex-center($width: 400px) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $width;
+}
