@@ -1,4 +1,4 @@
-// // document.body.style.background = "rgb(49 45 45)";
+document.body.style.background = "rgb(49 45 45)";
 // /*
 //   Constructor Function
 //   - New Syntax
@@ -28,26 +28,27 @@
 // console.log(userThree.u);
 // console.log(userThree.s);
 
-// // let userOne = {
-// //   id: 100,
-// //   userName: "Elzero",
-// //   salary: 10000,
-// // };
+// let userOne = {
+//   id: 100,
+//   userName: "Elzero",
+//   salary: 10000,
+// };
 
-// // let userTwo = {
-// //   id: 101,
-// //   userName: "Mos3aB",
-// //   salary: 8000,
-// // };
+// let userTwo = {
+//   id: 101,
+//   userName: "Mos3aB",
+//   salary: 8000,
+// };
 
-// // let userThree = {
-// //   id: 102,
-// //   userName: "Ali",
-// //   salary: 5000,
-// // };
-// //----------------------------------------------------
+// let userThree = {
+//   id: 102,
+//   userName: "Ali",
+//   salary: 5000,
+// };
 
-// // New Syntax  ES6
+//----------------------------------------------------
+
+// New Syntax  ES6
 // class UserInfo {
 //   constructor(userName, age, country) {
 //     this.name = userName;
@@ -62,9 +63,9 @@
 // console.log(one.country);
 
 // console.log(one instanceof UserInfo);
-// console.log(one.constructor === UserInfo);
 // console.log(one.constructor);
-// //----------------------------------------------------
+// console.log(one.constructor === UserInfo);
+//----------------------------------------------------
 /*
   Constructor Function
   - Deal with properties and methods
@@ -84,7 +85,7 @@
 //   }
 // }
 // let userInfoOne = new TheUser("Mos3aB", 5000);
-// let userInfoTwo = new TheUser("", 4000);
+// let userInfoTwo = new TheUser("Ahmed", 4000);
 
 // console.log(userInfoOne.n);
 // console.log(userInfoOne.s);
@@ -97,17 +98,36 @@
 // console.log(userInfoTwo.msg);
 // console.log(userInfoTwo.writeMsg);
 //----------------------------------------------------
-// /*
-//   Constructor Function
-//   - Update Properties
-//   - Bulit In Constructor
-// */
+/*
+  Constructor Function
+  - Update Properties
+  - Bulit In Constructor
+
+  Primitive Values vs Object
+    *Primitive vs. Object: The key difference here is that numOne is a primitive number,
+      while numTwo is an object that wraps around a number. Primitive values in JavaScript
+      (like numbers, strings, booleans, etc.) are simpler and more lightweight than objects. Objects,
+      including those created by constructors like Number, have more functionality and complexity but also more overhead.
+
+    * Use Cases: Choosing between a primitive number and a Number object depends on the specific needs of your program.
+      If you need the additional methods provided by the Number object (like rounding, converting to string, etc.),
+      then using the Number constructor makes sense. Otherwise, for simple numeric operations,
+      primitive numbers are preferred due to their simplicity and performance advantages.
+
+    * Key Differences
+      * Immutability: Primitive values are immutable, meaning once they are created, their value cannot change.
+        Objects are mutable, allowing their properties to be changed after creation.
+      * Storage: Primitive values are stored on the stack, whereas objects are stored on the heap.
+      * Value: Primitive values have a single value, while objects can have multiple properties (values).
+      * Methods: Only objects can have methods (functions).
+ */
 
 // class Data {
 //   constructor(name, title) {
 //     this.n = name;
 //     this.t = title;
 //   }
+//   // Methods
 //   updateName(newName) {
 //     this.n = newName;
 //   }
@@ -119,8 +139,7 @@
 // let empOne = new Data("Mos3aB", "Front End Developer");
 // console.log(empOne.n);
 // console.log(empOne.t);
-// empOne.updateName("Elzero");
-// empOne.updateTitle("Full Stack Developer");
+// empOne.updateTitle("Full Stack Engineer");
 // console.log(empOne.n);
 // console.log(empOne.t);
 // // String
@@ -137,25 +156,26 @@
 
 // // Number
 // let numOne = 2022;
-// let numTwo = new Number(2022);
+// let numTwo = new Number(2022.23);
 
 // console.log(typeof numOne); // Number
 // console.log(typeof numTwo); // Object
 
 // console.log(numOne instanceof Number); // false
 // console.log(numTwo instanceof Number); // true
+// console.log(numTwo.toFixed()); // 2022
 
 // console.log(numOne.constructor === Number); // true
 // console.log(numTwo.constructor === Number); // true
-// //----------------------------------------------------------------
-// /*
-//   Class
-//   - Static Properties And Methods
-//     The static keyword defines a static method or property for a class
+//----------------------------------------------------------------
+/*
+  Class
+  - Static Properties And Methods
+    The static keyword defines a static method or property for a class
 
-//     Neither static methods nor static properties can be called on instances of the class.
-//     Instead, they're called on the class itself.
-// */
+    Neither static methods nor static properties can be called on instances of the class.
+    Instead, they're called on the class itself.
+*/
 
 // class Static {
 //   static count = 0;
@@ -187,7 +207,7 @@
 // console.log(personOne.count); // Can't Access => Undefined
 // console.log(Static.count); // Can Access => 0
 
-// // console.log(personOne.sayHello()); => Error
+// // console.log(personOne.sayHello());// => Error
 // console.log(Static.sayHello());
 
 // console.log(Static.countMembers());
@@ -266,23 +286,23 @@
 // console.log(superMan.a);
 // console.log(superMan.ab);
 // console.log(superMan.sayHello());
-// //----------------------------------------------------------------
-// /*
-//   Encapsulation
-//   The main advantage of using encapsulation in JavaScript is to provide security
-//   to the data. Other benefits of encapsulation include:
-//   - Class fields are public by default
-//   - Guards the data against illegal access
-//   - Helps to achieve the target without revealing its complex details
-//   - Will reduce human errors
-//   - Make the app more flexible and manageable
-//   - Simplifies the app
+//----------------------------------------------------------------
+/*
+  Encapsulation
+  The main advantage of using encapsulation in JavaScript is to provide security
+  to the data. Other benefits of encapsulation include:
+  - Class fields are public by default
+  - Guards the data against illegal access
+  - Helps to achieve the target without revealing its complex details
+  - Will reduce human errors
+  - Make the app more flexible and manageable
+  - Simplifies the app
 
-//   Conclusion
-//     Encapsulation is the tool in JavaScript which can be used to make
-//     the complex operation easy and manageable with making the overall
-//     application secure and easy to work.
-// */
+  Conclusion
+    Encapsulation is the tool in JavaScript which can be used to make
+    the complex operation easy and manageable with making the overall
+    application secure and easy to work.
+*/
 // class TheEmp {
 //   // Privte Property
 //   #e;
@@ -298,18 +318,19 @@
 // let employerOne = new TheEmp(100, "Mos3aB", "5000 Genh");
 // console.log(employerOne.i);
 // console.log(employerOne.u);
-// console.log(employerOne.getSalary() * 0.3);
-// //----------------------------------------------------------------
-// /*
-//   Getters and Setters
-//     Classes also allows you to use getters and setters.
+// console.log(employerOne.getSalary());
+// console.log(employerOne.e) // undefined [You can't access to privte property direct]
+//----------------------------------------------------------------
+/*
+  Getters and Setters
+    Classes also allows you to use getters and setters.
 
-//     It can be smart to use getters and setters for your properties,
-//     especially if you want to do something special with the value before
-//     returning them, or before you set them.
+    It can be smart to use getters and setters for your properties,
+    especially if you want to do something special with the value before
+    returning them, or before you set them.
 
-//   To add getters and setters in the class, use the get and set keywords.
-// */
+  To add getters and setters in the class, use the get and set keywords.
+*/
 // class theInfo {
 //   #user;
 //   #card;
@@ -337,7 +358,7 @@
 // console.log(One.showData());
 // console.log(Two.showData());
 // console.log(Three.showData());
-// //----------------------------------------------------------------
+//----------------------------------------------------------------
 
 // class Parent {
 //   #re;
@@ -362,28 +383,31 @@
 
 // let vipUser1 = new Parent("Mos3aB", 21, 99.6);
 // console.log(vipUser1.reInfo());
+// console.log(vipUser1.ageInfo());
+// console.log(vipUser1.u);
+// console.log(vipUser1.re); // Undefined [You can't access to privte property direct]
 
 // let vipUser2 = new Child("Elzero", 40, 194.3, 300);
-// console.log(vipUser2.used);
-// console.log(vipUser2.reInfo());
 // console.log(vipUser2.u);
 // console.log(vipUser2.i);
-// //----------------------------------------------------------------
-// /*
-//   Prototype
-//   - Introduction
-//   - Prototypes are the machanism by which JavaScript objects
-//     inherit features from one another
-// */
+// console.log(vipUser2.used);
+// console.log(vipUser2.reInfo());
+//----------------------------------------------------------------
+/*
+  Prototype
+  - Introduction
+  - Prototypes are the machanism by which JavaScript objects
+    inherit features from one another
+*/
 // console.log(Parent.prototype);
 // let testStr = "Elzero";
 // console.log(String.prototype);
-// //----------------------------------------------------------------
-// /*
-//   Prototype
-//   - Add to prototype chain
-//   - Extend built in constructor features
-// */
+//----------------------------------------------------------------
+/*
+  Prototype
+  - Add to prototype chain
+  - Extend built in constructor features
+*/
 
 // class Prototype {
 //   constructor(id, userName) {
@@ -395,74 +419,74 @@
 //   }
 // }
 
-// let admin = new Prototype(20, "Elzero");
+// let admin = new Prototype(23, "Mos3aB");
 // console.log(admin.u);
 // console.log(Prototype.prototype);
 // console.log(admin);
 
 // Prototype.prototype.sayWelcome = function () {
-//   return `Welcome ${this.u}`;
+//   return `Welcome ${this.u}, Your Age Is ${this.i}`;
 // };
 
 // console.log(admin.sayHello());
 // console.log(admin.sayWelcome());
 
 // Object.prototype.love = "Elzero Web School";
-// String.prototype.addDotBeforeAndAfter = function (val) {
+// String.prototype.addDotBeforeAndAfter = function () {
 //   return `. ${this} .`;
 // };
 
 // let myString = "Mos3aB";
 // console.log(myString.addDotBeforeAndAfter());
-// //----------------------------------------------------------------
+//----------------------------------------------------------------
 /*
   Object meta data and descriptor
   - writable
   - enumerable
   - configurable [Cannot delete or reconfigure]
 */
-let myObject = {
-  a: 1,
-  b: 2,
-};
-console.log(myObject);
+// let myObject = {
+//   a: 1,
+//   b: 2,
+// };
+// console.log(myObject);
 
-Object.defineProperty(myObject, "c", {
-  // true if the value associated with the property may be changed with an
-  // assignment operator. Defaults to false.
-  writable: true,
-  // true if and only if this property shows up during enumeration of the
-  // properties on the corresponding object. Defaults to false.
-  enumerable: true,
-  /*
-    when this is set to false,
-    the type of this property cannot be changed between data property and
-      accessor property, and
-    the property may not be deleted, and
-    other attributes of its descriptor cannot be changed
-      (however, if it's a data descriptor with writable: true,
-      the value can be changed, and writable can be changed to false).
-    Defaults to false.
-  */
+// Object.defineProperty(myObject, "c", {
+//   // true if the value associated with the property may be changed with an
+//   // assignment operator. Defaults to false.
+//   writable: true,
+//   // true if and only if this property shows up during enumeration of the
+//   // properties on the corresponding object. Defaults to false.
+//   enumerable: true,
+//   /*
+//     when this is set to false,
+//     the type of this property cannot be changed between data property and
+//       accessor property, and
+//     the property may not be deleted, and
+//     other attributes of its descriptor cannot be changed
+//       (however, if it's a data descriptor with writable: true,
+//       the value can be changed, and writable can be changed to false).
+//     Defaults to false.
+//   */
 
-  configurable: false,
-  value: 3,
-});
-Object.defineProperty(myObject, "d", {
-  writable: false,
-  enumerable: false,
-  configurable: true,
-  value: 300,
-});
+//   configurable: false,
+//   value: 3,
+// });
+// Object.defineProperty(myObject, "d", {
+//   writable: false,
+//   enumerable: false,
+//   configurable: true,
+//   value: 300,
+// });
 
-myObject.c = 100;
+// myObject.c = 100;
 
-for (let prop in myObject) {
-  console.log(prop, myObject[prop]);
-}
+// for (let prop in myObject) {
+//   console.log(prop, myObject[prop]);
+// }
 
-// console.log(delete myObject.c);
-console.log(myObject);
+// // console.log(delete myObject.c);
+// console.log(myObject);
 // //----------------------------------------------------------------
 // /*
 //   Object meta data and descriptor
@@ -470,26 +494,26 @@ console.log(myObject);
 //   - check descriptors => getOwnPropertyDescriptor(), getOwnPropertyDescriptors()
 // */
 
-let theObject = {
-  a: 1,
-  b: 2,
-};
-Object.defineProperties(theObject, {
-  c: {
-    writable: true,
-    value: 3,
-  },
-  d: {
-    writable: true,
-    value: 4,
-  },
-  e: {
-    writable: true,
-    value: 5,
-  },
-});
-theObject.e = 100;
-console.log(theObject);
-console.log(Object.getOwnPropertyDescriptor(theObject, "e"));
-console.log(Object.getOwnPropertyDescriptors(theObject));
+// let theObject = {
+//   a: 1,
+//   b: 2,
+// };
+// Object.defineProperties(theObject, {
+//   c: {
+//     writable: true,
+//     value: 3,
+//   },
+//   d: {
+//     writable: true,
+//     value: 4,
+//   },
+//   e: {
+//     writable: true,
+//     value: 5,
+//   },
+// });
+// theObject.e = 100;
+// console.log(theObject);
+// console.log(Object.getOwnPropertyDescriptor(theObject, "e"));
+// console.log(Object.getOwnPropertyDescriptors(theObject));
 // //----------------------------------------------------------------

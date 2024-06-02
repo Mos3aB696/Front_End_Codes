@@ -20,15 +20,15 @@ let c = console.log;
 */
 function makeItRead(e) {
   e.target.style.color = "red";
+  e.target.style.background = "#FFF";
 }
 
 let p = document.querySelector(".test");
 p.addEventListener("click", makeItRead);
 
-// function iamAcallback() {
-//   c("Iam A Callback");
-// }
-
+function iamAcallback() {
+  c("Iam A Callback");
+}
 // setTimeout(iamAcallback, 500);
 
 // // Callback Hell
@@ -68,7 +68,7 @@ p.addEventListener("click", makeItRead);
 */
 
 // const myPromise = new Promise((resolveFunction, rejectFunction) => {
-//   let connect = false;
+//   let connect = true;
 //   connect
 //     ? resolveFunction("Connection Established")
 //     : rejectFunction("Connection Failed");
@@ -84,11 +84,7 @@ p.addEventListener("click", makeItRead);
 
 // let photoOPromise = new Promise((photoLoaded, photoUnloaded) => {
 //   let loading = false;
-//   if (loading) {
-//     photoLoaded("Loaded");
-//   } else {
-//     photoUnloaded("Loading");
-//   }
+//   loading ? photoLoaded("Photo Loaded") : photoUnloaded("Photo Not Loaded");
 // }).then(
 //   (doneLoad) => c(`Successful ${doneLoad}`),
 //   (faildLoad) => c(`Faild ${faildLoad}`)
@@ -121,7 +117,7 @@ p.addEventListener("click", makeItRead);
 */
 
 // const thePromise = new Promise((resolveFunction, rejectFunction) => {
-//   let employees = ["Moawaz", "Osama", "Seif", "Mos3aB"];
+//   let employees = ["Moawaz", "Osama", "Mos3aB", "Elzero"];
 //   if (employees.length === 4) {
 //     resolveFunction(employees);
 //   } else {
@@ -131,15 +127,12 @@ p.addEventListener("click", makeItRead);
 
 // thePromise
 //   .then((resolveValue) => {
-//     resolveValue.length = 2;
-//     return resolveValue;
+//     const randomEmp = Math.floor(Math.random() * resolveValue.length);
+//     const choosenEmp = resolveValue[randomEmp];
+//     return choosenEmp;
 //   })
-//   .then((resolveValue) => {
-//     resolveValue.length = 1;
-//     return resolveValue;
-//   })
-//   .then((resolveValue) => {
-//     c(`The Choosen Employee Is ${resolveValue}`);
+//   .then((choosenEmp) => {
+//     c(`The Choosen Employee Is ${choosenEmp}`);
 //   })
 //   .catch((rejectedReason) => c(rejectedReason))
 //   .finally((finially) => c("The Operation Is Done"));
@@ -149,25 +142,46 @@ p.addEventListener("click", makeItRead);
 */
 
 // const data = function (apiLink) {
+//   // Function That Return Promise
 //   return new Promise((resolve, reject) => {
+//     // XHR Request
 //     let myRequest = new XMLHttpRequest();
+//     // Onload Event
 //     myRequest.onload = function () {
+//       // Check If The Request Is Done And The Status Is 200
 //       if (this.status === 200 && this.readyState === 4) {
+//         // Resolve The Data
 //         resolve(JSON.parse(this.responseText));
 //       } else {
+//         // Reject The Data
 //         reject(Error("There Is No Data Found, Please Check Your URL"));
 //       }
 //     };
+//     // Open The Request
 //     myRequest.open("GET", apiLink);
+//     // Send The Request
 //     myRequest.send();
 //   });
 // };
 
-// data("https://api.github.com/users/Mos3aB696/repos")
-//   .then((result) => c(result[2].name))
+// // Get The Data From The API
+// data("https://api.github.com/users/Mos3aB696/repos").then((repos) => {
+//   for (let repo of repos) {
+//     c(
+//       "Repo_name => " +
+//         repo.name +
+//         " | Repo_id => " +
+//         repo.id +
+//         " | URL => " +
+//         repo.url +
+//         " | Watcher => " +
+//         repo.watchers
+//     );
+//   }
+// });
 //   .catch((rej) => c(rej))
 //   .finally(() => c("Mission Done"));
-
+// //
 // ("https://api.github.com/users/Mos3aB696/repos");
 
 // ---------------------------------------------------------
@@ -182,7 +196,20 @@ p.addEventListener("click", makeItRead);
 */
 // fetch("https://api.github.com/users/Mos3aB696/repos")
 //   .then((fullData) => fullData.json())
-//   .then((myJson) => c(myJson[1].name))
+//   .then((myJson) => {
+//     for (let repo of myJson) {
+//       c(
+//         "Repo_name => " +
+//           repo.name +
+//           " | Repo_id => " +
+//           repo.id +
+//           " | URL => " +
+//           repo.url +
+//           " | Watcher => " +
+//           repo.watchers
+//       );
+//     }
+//   })
 //   .catch((rej) => c(rej))
 //   .finally(() => c("Mission Complete"));
 
@@ -198,53 +225,57 @@ p.addEventListener("click", makeItRead);
     all of the provided Promises resolve or reject.
 
   - Race 
-    Creates a Promise that is resolved or rejected when 
-    any of the provided Promises are resolved or rejected.
+    Creates a Promise that is resolved or rejected when
+    any of the provided Promises are resolved or rejected. [First One Wins]
 */
 
-const myFirstPromise = new Promise((res, rej) => {
-  setTimeout(() => {
-    res("Iam The First Promise");
-  }, 500);
-});
-const mySecondPromise = new Promise((res, rej) => {
-  setTimeout(() => {
-    res("Iam The Second Promise");
-  }, 1000);
-});
-const myThirdPromise = new Promise((res, rej) => {
-  setTimeout(() => {
-    res("Iam The Third Promise");
-  }, 2000);
-});
+// const myFirstPromise = new Promise((res, rej) => {
+//   setTimeout(() => {
+//     res("Iam The First Promise");
+//     // rej("Faild The First Promise");
+//   }, 500);
+// });
+// const mySecondPromise = new Promise((res, rej) => {
+//   setTimeout(() => {
+//     res("Iam The Second Promise");
+//   }, 1000);
+// });
+// const myThirdPromise = new Promise((res, rej) => {
+//   setTimeout(() => {
+//     rej("Iam The Third Promise");
+//   }, 200);
+// });
 
-// It returns the first rejected, If found it
-// It returns the all resolved as an array, If there is no rejected
-Promise.all([myFirstPromise, mySecondPromise, myThirdPromise]).then(
-  (resolvedValues) => c(resolvedValues),
-  (rejectedValues) => c(`Rejected: ${rejectedValues}`)
-);
+// let promiseArray = [myFirstPromise, mySecondPromise, myThirdPromise];
 
-Promise.allSettled([myFirstPromise, mySecondPromise, myThirdPromise]).then(
-  (resolvedValues) => c(resolvedValues),
-  (rejectedValues) => c(`Rejected: ${rejectedValues}`)
-);
+// Creates a Promise that is resolved with an array of results when all of the provided Promises resolve,
+// or rejected when any Promise is rejected.
+// Promise.all(promiseArray)
+//   .then((resolvedValues) => c(resolvedValues))
+//   .catch((rej) => c("Error: ", rej))
+//   .finally(() => c("All Promises Are Done"));
 
-Promise.race([myFirstPromise, mySecondPromise, myThirdPromise]).then(
-  (resolvedValues) => c(resolvedValues),
-  (rejectedValues) => c(`Rejected: ${rejectedValues}`)
-);
+// Creates a Promise that is resolved with an array of results when all of the provided Promises resolve or reject.
+// Promise.allSettled(promiseArray)
+//   .then((resolvedValues) => c(resolvedValues))
+//   .catch((rej) => c("Error: ", rej))
+//   .finally(() => c("All Promises Are Done"));
+
+// Promise.race(promiseArray)
+//   .then((resolvedValues) => c(resolvedValues))
+//   .catch((rej) => c("Error: ", rej))
+//   .finally(() => c("All Promises Are Done"));
 // ---------------------------------------------------------
 /*
   Async
   - Async before function mean this function return a promise
   - Async and Await help in creating asyncronous promise behavior with cleaner style
 
-"async and await make promises easier to write"
+  "async and await make promises easier to write"
 
-async makes a function return a Promise
+  async makes a function return a Promise
 
-await makes a function wait for a Promise
+  await makes a function wait for a Promise
 */
 
 // function getData() {
@@ -263,7 +294,7 @@ await makes a function wait for a Promise
 // );
 
 // function myData() {
-//   let users = ["Mos3aB", " Moawaz"];
+//   let users = ["Mos3aB", " Moawaz", " Elzero"];
 //   if (users.length > 0) {
 //     return Promise.resolve(
 //       users.length === 1 ? `The User Is ${users}` : `The Users Are ${users}`
@@ -291,10 +322,9 @@ await makes a function wait for a Promise
 
 // c(theData());
 
-// theData().then(
-//   (resolved) => c(resolved),
-//   (rejected) => c(rejected)
-// );
+// theData()
+//   .then((resolved) => c(resolved))
+//   .catch((rejected) => c(rejected));
 // ---------------------------------------------------------
 /*
   Await
@@ -306,21 +336,21 @@ await makes a function wait for a Promise
 
 // let promise = new Promise((resolve, reject) => {
 //   setTimeout(() => {
-//     // resolve("Iam A Good Promise");
+//     resolve("Iam A Good Promise");
 //     reject("Iam A Bad Promise");
-//   }, 500);
+//   }, 5000);
 // });
 
 // async function readData() {
 //   c("Before Promise");
 //   // You can use Await without then
-//   // await promise.then(
-//   //   (res) => c(res),
-//   //   (rej) => c(rej)
-//   // );
+//   await promise.then(
+//     (res) => c(res),
+//     (rej) => c(rej)
+//   );
 
 //   // Use catch to catch the error
-//   c(await promise.catch((rej) => rej));
+//   // c(await promise.catch((rej) => rej));
 
 //   c("After Promise");
 // }
@@ -331,36 +361,35 @@ await makes a function wait for a Promise
 */
 const finialPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve("Finially Resolved Promise");
+    resolve("Finially Resolved Promise"); // 5
     reject("Finially Rejected Promise");
-  }, 2000);
+  }, 1000);
 });
 
-// async function finialData() {
-//   c("Before Finally");
-
-//   try {
-//     c(await finialPromise);
-//   } catch (rej) {
-//     c(`Rejected Reason: ${rej}`);
-//   } finally {
-//     c("After Finally");
-//   }
-// }
-// finialData();
-//("https://api.github.com/users/Mos3aB696/repos");
+async function finialData() {
+  c("Before Finally"); // 1
+  try {
+    c(await finialPromise);
+  } catch (rej) {
+    c(`Rejected Reason: ${rej}`);
+  } finally {
+    c("After Finally"); // 6
+  }
+}
+finialData();
+// ("https://api.github.com/users/Mos3aB696/repos");
 
 // Async functions can contain zero or more await expressions
-// async function finialFetch() {
-//   c("Before Fetch");
-//   try {
-//     let myData = await fetch("https://api.github.com/users/Mos3aB696/repos");
-//     let lastData = await myData.json();
-//     c(lastData[2].name);
-//   } catch (reason) {
-//     c(reason);
-//   } finally {
-//     c("After Fetch");
-//   }
-// }
-// finialFetch();
+async function finialFetch() {
+  c("Before Fetch"); // 2
+  try {
+    let myData = await fetch("https://api.github.com/users/Mos3aB696/repos");
+    let lastData = await myData.json();
+    c(lastData[2].name); // 3
+  } catch (reason) {
+    c(reason);
+  } finally {
+    c("After Fetch"); // 4
+  }
+}
+finialFetch();
