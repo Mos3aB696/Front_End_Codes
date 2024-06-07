@@ -26,7 +26,7 @@ import { sum } from "../sum";
 /**
  * Coverage Report
  * Get the coverage report by running the following command:
- * npm test -- --coverage | You Can Edit package.json
+ * npm test -- --coverage | You Can Edit package.json (collectCoverage: true)
  * Coverage Report help you to know how many lines of code you have tested
  * It very helpful in large projects
  */
