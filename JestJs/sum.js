@@ -1,3 +1,8 @@
-export function sum(a, b, ...rest) {
-  return (a || 0) + (b || null) + (rest.length > 0 ? rest.reduce((acc, val) => acc + val) : 0);
+/**
+ * Function to sum numbers
+ * @param  {...any} numbers - Numbers to sum
+ * @returns Sum Of Numbers
+ */
+export function sum(...numbers) {
+  return numbers.reduce((acc, val) => acc + val, 0);
 }
