@@ -1,9 +1,0 @@
-.vscode/
-dist/
-node_modules/
-public/
-jsconfig.json
-Learn_VueJS.code-workspace
-package-lock.json
-package.json
-vite.config.js
