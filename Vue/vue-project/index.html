@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--  
+        - works by setting the element's textContent property
+        - make overwriting the element's content
+        - if you want to change part of content, you should use mustache syntax {{}}
+        - v-text is more efficient than {{}} because it doesn't need to compile the template
+      -->
+      <span v-if="name">{{'hello ' + name + " | "}}</span>
+      <span v-if="name" v-text="name"></span>
+
+      <!--
+      v-if vs v-show
+        - v-if => If the expression returns a truthy value, the element is rendered.
+        - v-show => If the expression returns a truthy value, the element is displayed.
+        - v-if has higher toggle cost while v-show has higher initial render cost.
+        - So, if you need to toggle something very often, use v-show.
+        - If the element is likely never to be toggled, use v-if.
+      -->
+      <p v-if="name">{{'Hello: ' + name}}</p>
+      <p v-show="name">{{'Hello: ' + name}}</p>
+
+      <!-- Render the element and component once only, and skip future updates. -->
+      <p v-once>{{ age }}</p>
+      <!--
+        - Contents of v-html are inserted as plain HTML
+        - It can easily lead to XSS attacks.
+        - Only use v-html on trusted content and never on user-provided content
+      -->
+      <p v-html="title"></p>
+
+      <!--
+        Condition
+        - v-if => If the expression returns a truthy value, the element is rendered.
+        - v-else-if => If the expression returns a truthy value, the element is rendered.
+        - v-else => If the expression returns a truthy value, the element is rendered.
+
+        Note:
+          - v-else-if and v-else should be placed immediately after v-if or v-else-if.
+      -->
+      <p v-if="gender == 'male'">{{'Hello Mr: ' + name }}</p>
+      <p v-else-if="gender == 'female'">{{'Hello Mrs: ' + name}}</p>
+      <p v-else>{{'Hello: ' + name}}</p>
+
+      <!-- 
+        !!!! Don't use v-if with v-for on the same element.
+          Because v-if has a higher priority than v-for.
+          <li v-for="test in tests" v-if="test.isPassed">
+            So in this case v-if will be executed first and v-for will not be executed.
+            and throw the error because test is not defined.
+
+        ? Solution:
+          - we can use a <template> tag with v-for to wrap the <li> element 
+            with v-if directive
+      -->
+      <ul>
+        <template v-for="test in tests" :key="test.testName">
+          <li v-if="test.isPassed">{{test.testName}}</li>
+        </template>
+      </ul>
+
+      <!--
+        - For Loop
+        - Render the element or template block multiple times based on the source data.
+      -->
+      <br />
+      <hr />
+      <br />
+      <ul v-for="lang in languages">
+        <li>{{ lang }}</li>
+      </ul>
+      <br />
+      <ul v-for="(lang, index) in languages">
+        <li>{{index + ' => ' + lang }}</li>
+      </ul>
+      <br />
+      <span v-for="(value, key) in address"> {{key }} => {{ value }} | </span>
+      <br />
+      <p v-for="test in tests">{{test.testName + ' => Degree: ' + test.result}}</p>
+      <!-- 
+        v-on => Attach an event listener to the element.
+        - Shorthand : @
+        - Modifiers:
+          - .stop - call event.stopPropagation().
+          - .prevent - call event.preventDefault().
+          - .capture - add event listener in capture mode.
+          - .self - only trigger handler if event was dispatched from this element.
+          - .{keyAlias} - only trigger handler on certain keys.
+          - .once - trigger handler at most once.
+          - .left - only trigger handler for left button mouse events.
+          - .right - only trigger handler for right button mouse events.
+          - .middle - only trigger handler for middle button mouse events.
+          - .passive - attaches a DOM event with { passive: true }.
+      -->
+      <button class="submit-btn hov" @click.once.middle="increment">{{count}}</button>
+      <form>
+        <input name="username" autocomplete="yes" type="text" :value="name" />
+        <input name="userage" type="number" :value="age" />
+        <button class="submit-btn" @click.prevent>submit</button>
+      </form>
+      <div>You Name Is {{ name }}</div>
+      <button
+        class="submit-btn hov"
+        @mouseover="mouseOn"
+        @mouseout="mouseOut"
+        @click="mouseClicked"
+      >
+        submit
+      </button>
+
+      <!--
+        - v-bind => Dynamically bind one or more attributes, or a component prop to an expression.
+        - One Way Data Binding
+        - Shorthand:[ : OR . ]:
+      -->
+      <a :href="websiteUrl">
+        <img .src="imageUrlOne" :width="imageSize" :alt="imageAltText" />
+        <img .src="imageUrlTwo" :width="imageSize" :alt="imageAltText" />
+      </a>
+      <br />
+
+      <!--
+        - v-model => Create a two-way binding on a form input element or a component.
+        - Two Way Data Binding
+        - v-model is essentially syntax sugar for updating data on user input events.
+        - v-model internally uses different properties and emits different events for different input elements:
+          - text and textarea elements use value property and input event.
+          - checkboxes and radio buttons use checked property and change event.
+          - select fields use value as a prop and change as an event.
+      -->
+
+      <input type="checkbox" id="checkbox" v-model="clicked" />
+      <label for="checkbox">{{ clicked }}</label>
+
+      <form>
+        <label for="oneWayBind">One Way Bind</label>
+        <input type="text" id="oneWayBind" :value="name" />
+        <label for="twoWayBind">Two Way Bind</label>
+        <input type="text" id="twoWayBind" v-model="name" />
+      </form>
+      <div>Your Name Is: {{name}}</div>
+
+      <p>Your Message Is: {{message}}</p>
+      <textarea
+        class="message"
+        type="text"
+        v-model="message"
+        placeholder="Enter Message"
+      ></textarea>
+
+      <div>Picked: {{ picked }}</div>
+      <form class="custom-form">
+        <div class="one">
+          <input type="radio" id="one" value="One" v-model="picked" />
+          <label for="one">One</label>
+        </div>
+        <div class="two">
+          <input type="radio" id="two" value="Two" v-model="picked" />
+          <label for="two">Two</label>
+        </div>
+      </form>
+
+      <select v-model="selected" class="select-box">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <span>Selected: {{ selected }}</span>
+      <say-greeting message="Hello From html"></say-greeting>
+
+      <span>{{ fullData }}</span> | <span>{{ fullData }}</span>
+
+      <form>
+        <label for="search">Search For Programming Languages: </label>
+        <input type="text" id="search" v-model="findLanguage" />
+        <ol>
+          <li v-for="lang in filterLanguages">{{ lang }}</li>
+        </ol>
+      </form>
+      <div class="input-validation">
+        <h2>Input Validation</h2>
+        <label for="username">Enter Your Username </label>
+        <input type="text" id="username" v-model="username" autocomplete="off" />
+        <p>{{ validateUsername }}</p>
+      </div>
+      <div class="input-validation">
+        <h2>Change Currency</h2>
+        <label for="pound"> Egyption Pound </label>
+        <input
+          type="text"
+          id="pound"
+          v-model="pound"
+          autocomplete="off"
+          placeholder="Enter Egyption Pound"
+        />
+        <label for="dollar"> Dollar </label>
+        <input
+          type="text"
+          id="dollar"
+          v-model="dollar"
+          autocomplete="off"
+          placeholder="Enter Dollar"
+        />
+      </div>
+      <div class="input-validation">
+        <h2>Change Hour</h2>
+        <label for="hour"> hour</label>
+        <input type="text" id="hour" v-model="hour" autocomplete="off" placeholder="Enter hour" />
+        <label for="minute"> minute </label>
+        <input
+          type="text"
+          id="minute"
+          v-model="minute"
+          autocomplete="off"
+          placeholder="Enter minute"
+        />
+        <label for="second"> second </label>
+        <input
+          type="text"
+          id="second"
+          v-model="second"
+          autocomplete="off"
+          placeholder="Enter second"
+        />
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
