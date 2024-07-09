@@ -23,19 +23,18 @@ ul.links {
   color: #fff;
 }
 
-@mixin centering {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .center-circle {
   @include circle(400px);
   @include centering;
 }
 
 // Loop => For
-
+/*
+  ? from 1 to 5 
+    ! Don't including 5 => 1, 2, 3, 4
+  ? from 1 through 5
+    ! Including 5 => 1, 2, 3, 4, 5
+*/
 @for $i from 1 through 5 {
   .class-#{$i} {
     font-size: #{$i + 10px};
@@ -44,17 +43,17 @@ ul.links {
 
 $dimensions: 0;
 
-@for $i from 1 through 5 {
+@for $i from 1 to 5 {
   .class-#{100 + $dimensions} {
-    width: 100 + $dimensions;
-    height: 100 + $dimensions;
+    width: 100px + $dimensions;
+    height: 100px + $dimensions;
     border-radius: 50%;
   }
   $dimensions: $dimensions + 100;
 }
 // Each + Maps
 
-$themes: red, green, blue, orange;
+$themes: red, green, blue, orange, violet;
 
 @each $theme in $themes {
   .#{$theme}-theme {
@@ -77,6 +76,8 @@ $social: (
   "Twitter": rgb(6, 154, 203),
 );
 
+// Use @each to make loop on key and value
+
 @each $name, $color in $social {
   .#{$name} {
     background-color: $color;
@@ -87,8 +88,10 @@ $social: (
   }
 }
 
+// You can use destructuring like javascript
+
 $classes: "one" 20px red #fff, "two" 14px blue #fff, "three" 24px green #fff,
-  "four" 50px yellow #fff, "five" 30px black #fff;
+  "four" 50px yellow #fff, "five" 30px black #fff,"six" 40px violet #fff;
 
 @each $name, $font-size, $bg-color, $color in $classes {
   .#{$name} {
@@ -103,7 +106,7 @@ $classes: "one" 20px red #fff, "two" 14px blue #fff, "three" 24px green #fff,
 
 $start: 1;
 
-@while $start <= 9 {
+@while $start <= 5 {
   .width-#{$start * 100} {
     width: $start * 100px;
     height: ($start * 100px) / 2;
@@ -153,7 +156,7 @@ $width: 200px;
 }
 // If Condition + Mixin + Content
 .media {
-  @include breakpoint(very small) {
+  @include breakpoint(mobil) {
     font-size: 15px;
   }
   @include breakpoint(small) {

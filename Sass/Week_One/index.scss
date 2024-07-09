@@ -4,20 +4,20 @@
   => @import 
   * @import is also a CSS feature, and the differences can be confusing
   * If you @import the same file multiple times, it can slow down compilation,
-  cause override conflicts, and generate duplicate output.
+    cause override conflicts, and generate duplicate output.
   * Everything is in the global namespace, including third-party packages – so
-  my color() function might override your existing color() function, or vice versa.
+    my color() function might override your existing color() function, or vice versa.
   * When you use a function like color(). it’s impossible to know exactly
-  where it was defined. Which @import does it come from?
+    where it was defined. Which @import does it come from?
 
   => @use 
   * The file is only imported once, no matter how many times you @use it in a project.
   * Variables, mixins, and functions (what Sass calls “members”) that start
-  with an underscore (_) or hyphen (-) are considered private, and not imported.
+    with an underscore (_) or hyphen (-) are considered private, and not imported.
   * Members from the used file (buttons.scss in this case) are only made
-  available locally, but not passed along to future imports.
+    available locally, but not passed along to future imports.
   * Similarly, @extends will only apply up the chain; extending selectors
-  in imported files, but not extending files that import this one.
+    in imported files, but not extending files that import this one.
   * All imported members are namespaced by default.
 
   Note: When you
@@ -69,7 +69,7 @@ Sass uses the $ symbol, followed by a name, to declare variables:
     which means if you change the value, it’ll affect both earlier uses and later uses.
 */
 
-// $spicial-color: yellow;
+$spicial-color: yellow;
 .test {
   $spicial-color: black !global;
   color: $spicial-color;
@@ -191,6 +191,7 @@ $alt_color: green;
     font-weight: bold;
   }
   // <element class="box red">
+  // & Refer To The Parent Element
   &.red {
     color: red;
   }
@@ -225,6 +226,7 @@ $alt_color: green;
   font: {
     size: 15px;
     weight: bold;
+    family: sans-serif;
   }
   padding: 10px;
   margin: auto {
@@ -244,7 +246,10 @@ $alt_color: green;
 .article {
   font-size: 20px;
   color: green;
-  // The @extend directive lets you share a set of CSS properties from one selector to another.
+  /*
+    * The @extend directive lets you share a set of CSS properties from one selector to another.
+    ! If the .main-box class is a part of the your project
+  */
   @extend .main-box;
 }
 .ads {
@@ -258,9 +263,12 @@ $alt_color: green;
 }
 /*
 * Placeholder help you to be more productive without rewriting properties all over
-again that you need in your CSS library.
+  again that you need in your CSS library.
 * You can customise your needs and made a small library out of it.
-Include placeholders in your SCSS and use them every time you want it in your project
+  Include placeholders in your SCSS and use them every time you want it in your project
+*/
+/*
+  * If you want use only placeholder and there is not class by this name you can use %
 */
 %source {
   background-color: #3ee;
@@ -275,8 +283,8 @@ Include placeholders in your SCSS and use them every time you want it in your pr
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 /*
-The @mixin directive lets you create CSS code that is to be reused throughout the website.
-The @include directive is created to let you use (include) the mixin.
+ * The @mixin directive lets you create CSS code that is to be reused throughout the website.
+ * The @include directive is created to let you use (include) the mixin.
 */
 @mixin important-text {
   background-color: red;
@@ -289,7 +297,7 @@ The @include directive is created to let you use (include) the mixin.
 }
 //---------------------------------------------------------------------------
 // Control Flow => If And Else
-$theme: "light";
+$theme: "dark";
 .page {
   @if $theme == "light" {
     background-color: #fff;
@@ -303,6 +311,10 @@ $theme: "light";
 $rounded: true;
 .box {
   @extend .main-box;
+  /*
+    * You can use the condition inlined
+    ? (condition, if-true, if-false)
+  */
   border-radius: if($rounded, 6px, null);
 }
 //---------------------------------------------------------------------------
@@ -361,9 +373,9 @@ $direction: "top";
 $company: "Mos3aB";
 $position: "top";
 /*
-unique-id() => Returns a randomly-generated unquoted string that’s 
-guaranteed to be a valid CSS identifier and to be unique within the current
-Sass compilation.
+ * unique-id() => Returns a randomly-generated unquoted string that’s 
+    guaranteed to be a valid CSS identifier and to be unique within the current
+    Sass compilation.
 */
 .ad-#{$company}-#{unique-id()} {
   font-size: 20px;
@@ -400,10 +412,11 @@ Comment*/ {
 // You Can Use Interpolation Inside Comment
 /* This Comment Contains Interpolation => #{$company} */
 
-/*When writing style libraries using Sass, you can use comments to document the mixins,
-functions, variables, and placeholder selectors that your library provides,
-as well as the library itself. These are comments are read by the SassDoc tool,
-which uses them to generate beautiful documentation.
+/*
+  When writing style libraries using Sass, you can use comments to document the mixins,
+  functions, variables, and placeholder selectors that your library provides,
+  as well as the library itself. These are comments are read by the SassDoc tool,
+  which uses them to generate beautiful documentation.
 */
 /// Function To Do Bla Bla Bla
 ///

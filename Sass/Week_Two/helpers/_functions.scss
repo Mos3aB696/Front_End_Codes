@@ -1,4 +1,8 @@
-// Create Function To Get Half Of Anything
+/// Function to get element height
+/// 
+/// @param {$size}
+/// @return {int}
+/// Return element height width / 2
 @function half($size) {
   @return $size / 2;
 }

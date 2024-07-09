@@ -10,6 +10,12 @@
   height: $dimensions;
 }
 
+@mixin centering {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin overlay($color, $opacity) {
   position: absolute;
   left: 0;
@@ -26,7 +32,7 @@
 }
 
 @mixin breakpoint($point) {
-  @if $point == very small {
+  @if $point == mobil {
     @media (max-width: 767px) {
       @content;
     }
