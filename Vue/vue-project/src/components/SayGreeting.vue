@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'say-greeting',
+  name: 'Say-Greet',
   data() {
     return {
       greeting: 'Hello From Vue Component'
@@ -17,13 +17,6 @@ export default {
   methods: {
     change() {
       this.greeting = 'Hello This Is My First Vue Component'
-    }
-  },
-  props: {
-    message: {
-      type: String,
-      required: true,
-      default: 'Hello'
     }
   }
 }

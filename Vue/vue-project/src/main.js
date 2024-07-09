@@ -4,7 +4,7 @@ import SayGreeting from './components/SayGreeting.vue'
 
 const app = createApp({
   components: {
-    'say-greeting': SayGreeting
+    'say-greet': SayGreeting
   },
   data() {
     return {
