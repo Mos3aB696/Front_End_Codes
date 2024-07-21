@@ -1,0 +1,55 @@
+:root {
+  --main-color: #59c837;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  margin: 100px auto;
+  text-align: center;
+}
+
+.container form input {
+  width: 50%;
+  height: 40px;
+  display: block;
+  padding: 5px 10px;
+  margin: 0 auto;
+  font-size: 1.2em;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  caret-color: var(--main-color);
+}
+.container form input:focus {
+  outline: none;
+  border: 1px solid var(--main-color);
+}
+.container form button {
+  border: none;
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  margin: 10px 0 5px 0;
+  cursor: pointer;
+}
+.container form button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.container div {
+  margin: 0;
+  font-size: 1.2em;
+}
+.container div span {
+  color: #f1ae1b;
+  font-weight: bold;
+}

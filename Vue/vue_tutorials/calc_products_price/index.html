@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Calc Product Price</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <div class="product-box" v-for="product in products" :key="product.id">
+          <h2>{{ product.name }}</h2>
+          <p>{{product.description}}</p>
+          <p>Price: {{product.price}}</p>
+          <input
+            type="range"
+            name="range"
+            min="1"
+            max="20"
+            step="1"
+            v-model="product.amount"
+          />
+          <div class="finial">
+            <span class="amount">Amount: {{product.amount}}</span>
+            <span class="total">Total: {{product.price * product.amount}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const { createApp } = Vue;
+        fetch("./product_data.json")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            const app = createApp({
+              data() {
+                return {
+                  products: data,
+                };
+              },
+            });
+            app.mount("#app");
+          })
+          .catch((error) => console.log("Failed to load product data", error));
+      });
+    </script>
+  </body>
+</html>

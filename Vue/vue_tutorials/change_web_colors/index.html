@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>change website color</title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <ul class="switch">
+        <li data-color="#f1ae1b" @click="updateColor"></li>
+        <li data-color="#59c837" @click="updateColor"></li>
+        <li data-color="#e9524a" @click="updateColor"></li>
+        <li data-color="#fea335" @click="updateColor"></li>
+        <li data-color="#62c2fd" @click="updateColor"></li>
+      </ul>
+      <div class="changes">
+        <div>Change</div>
+        <div>Change</div>
+        <div>Change</div>
+        <div>Change</div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app = Vue.createApp({
+        methods: {
+          updateColor(event) {
+            const selectedColor = event.target.dataset.color;
+            document.documentElement.style.setProperty(
+              "--maincolor",
+              selectedColor
+            );
+          },
+        },
+      });
+      app.mount("#app");
+      console.log("loaded");
+    </script>
+  </body>
+</html>

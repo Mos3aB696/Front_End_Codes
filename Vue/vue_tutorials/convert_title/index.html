@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Convert title to slag</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <form>
+          <input type="text" v-model="input" />
+          <button @click.prevent="convertToSlug">Convert</button>
+        </form>
+        <div>https//www.mos3ab.com/<span>{{ output }}</span></div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            input: "",
+            output: "",
+          };
+        },
+        methods: {
+          convertToSlug() {
+            // Cache input
+            let userInput = this.input;
+
+            // Convert To Lowercase
+            userInput = userInput.toLowerCase();
+
+            // Trim Spaces From Starting And Ending
+            userInput = userInput.trim();
+
+            // Replace Spaces With Dashes
+            userInput = userInput.replace(/\s+/g, "-");
+
+            // Replace & With and
+            userInput = userInput.replace(/&/g, "-and-");
+
+            // Return The Output
+            this.output = userInput;
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
